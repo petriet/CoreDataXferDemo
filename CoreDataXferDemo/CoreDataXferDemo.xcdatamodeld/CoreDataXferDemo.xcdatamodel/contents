@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Book" representedClassName="Book" syncable="YES">
+        <attribute name="bookID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="belongsTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Library" inverseName="hasBooks" inverseEntity="Library" syncable="YES"/>
+        <relationship name="borrowedBy" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Patron" inverseName="borrows" inverseEntity="Patron" syncable="YES"/>
+    </entity>
+    <entity name="Library" representedClassName="Library" syncable="YES">
+        <attribute name="libraryID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="libraryName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="hasBooks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="belongsTo" inverseEntity="Book" syncable="YES"/>
+    </entity>
+    <entity name="Patron" representedClassName="Patron" syncable="YES">
+        <attribute name="libraryCard" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="borrows" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="borrowedBy" inverseEntity="Book" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Book" positionX="-540" positionY="-166" width="128" height="103"/>
+        <element name="Library" positionX="-333" positionY="-234" width="128" height="88"/>
+        <element name="Patron" positionX="-335" positionY="-61" width="128" height="88"/>
+    </elements>
+</model>
